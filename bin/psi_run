@@ -1,0 +1,9 @@
+#!/bin/tcsh
+
+./bin/seq2mtx $1 2>lala >lele.mtx
+./bin/psipred lele.mtx ./data/weights.dat ./data/weights.dat2 ./data/weights.dat > lele.ss
+./bin/psipass2 ./data/weights_p2.dat 1 1.0 1.0 lele.ss2 lele.ss  | awk 'BEGIN{IFS=" "}{if ($1~/Pred/) print $2}' | tr -d "\n" 
+
+
+echo 
+rm lele* lala

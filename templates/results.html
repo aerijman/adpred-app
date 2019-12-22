@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+    {% block downloads %}
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" onclick="window.location.href='{{ url_for('download', filename=csv_data_smooth) }}'">Download processed data</a>
+      <a class="dropdown-item" onclick="window.location.href='{{ url_for('download', filename=csv_data) }}'">Download raw data</a>
+    {% endblock %}
+
+    {% block content %}
+        <!-- <h1>{{ name }}</h1> <h2>Probability of AD over the entire protein sequence</h2> -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+        <div class="chart" id="bargraph">
+            <script>
+                var graphs = {{plot | safe}};
+                Plotly.plot('bargraph',graphs,{});
+            </script>
+        </div>
+        <!-- Download csv_data-->
+        <!--<a href="{{ url_for('download', filename=csv_data) }}">Download</a>-->
+        <!--<a href="path_to_file" download="{{ csv_data }}">Download</a>-->
+        <!--<button class="button" onclick="window.location.href='{{ url_for('download', filename=csv_data) }}'";>Download</button>
+        <button class="button button1" onclick="window.location.href='{{ url_for( 'index' ) }}'";>Go to previous page</button>-->
+    {% endblock %}

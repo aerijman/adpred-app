@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+  {% block content %}
+    <form action="{{ url_for('index') }}" method="POST" name='form1'>  
+      <textarea name="sequence" rows="10" cols=64" placeholder="Paste sequence or protein identifier here." required></textarea><br>
+      <button class="button">Predict</button>
+        <input onclick='input()'  value='Example 1' style="width:120px; text-align:center">
+        <input onclick='input2()' value='Example 2' style="width:120px; text-align:center">
+    </form>
+  {% endblock %}
